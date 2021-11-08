@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net"
 
@@ -30,6 +31,7 @@ func main() {
 	s := grpc.NewServer()
 	pb.RegisterCalcServiceServer(s, &server{})
 
+	fmt.Println("Server listening on Port 23333")
 	if e := s.Serve(listener); e != nil {
 		log.Fatal(e)
 	}
