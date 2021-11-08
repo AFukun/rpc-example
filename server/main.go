@@ -11,7 +11,6 @@ import (
 	"google.golang.org/grpc"
 )
 
-// server implements EchoServer.
 type server struct{}
 
 func (s *server) Calculate(ctx context.Context, request *pb.Request) (*pb.Response, error) {

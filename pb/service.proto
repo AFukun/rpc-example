@@ -1,9 +1,10 @@
-// use protoc tool to generate pb.go: protoc --go_out=$GOPATH/src pb/simple.proto
+// use protoc tool to generate service.pb.go
+// protoc --proto_path=pb --go_out=plugins=grpc:$GOPATH/src pb/service.proto
 
 syntax = "proto3";
 
 package pb;
-option go_package = "Client-Server/pb";
+option go_package = "github.com/AFukun/rpc-example/pb";
 
 message Request {
   string Equation = 1;
