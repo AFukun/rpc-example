@@ -1,0 +1,18 @@
+// use protoc tool to generate pb.go: protoc --go_out=$GOPATH/src pb/simple.proto
+
+syntax = "proto3";
+
+package pb;
+option go_package = "Client-Server/pb";
+
+message Request {
+  string Equation = 1;
+}
+
+message Response {
+  float Result = 1;
+}
+
+service CalcService {
+  rpc Calculate(Request) returns (Response) {}
+}
