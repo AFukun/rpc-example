@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
 
 	"github.com/AFukun/rpc-example/pb"
 	"github.com/AFukun/rpc-example/server/calculator"
@@ -22,7 +23,8 @@ func (s *server) Calculate(ctx context.Context, request *pb.Request) (*pb.Respon
 }
 
 func main() {
-	listener, err := net.Listen("tcp", ":23333")
+	port := os.Args[1]
+	listener, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		panic(err)
 	}
@@ -30,7 +32,7 @@ func main() {
 	s := grpc.NewServer()
 	pb.RegisterCalcServiceServer(s, &server{})
 
-	fmt.Println("Server listening on Port 23333")
+	fmt.Println("Server listening on Port " + port)
 	if e := s.Serve(listener); e != nil {
 		log.Fatal(e)
 	}
