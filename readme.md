@@ -15,10 +15,16 @@ $ make build
 
 ```shell
 # Shell 1 
-$ ./bin/server
-
+$ ./bin/server 9000
 # Shell 2
-# client should be running after server initialized
+$ ./bin/server 9001
+# Shell 3
+$ ./bin/server 9002
+# Shell 4
+$ ./bin/server 9003
+
+# Shell 0 (client should be running after server initialized)
+# 只要有一个server正确运行则可以返回结果
 $ ./bin/client
 ```
 
